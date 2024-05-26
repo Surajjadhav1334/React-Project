@@ -1,12 +1,13 @@
 import express from 'express'
 
 const app = express()
+app.use(express.static('dist'))
 
-app.get('/', (req, res) => {
-    res.send('server is empty');
-});
+// app.get('/', (req, res) => {
+//     res.send('server is empty');
+// });
 
-app.get('/jokes', (req, res) => {
+app.get(`/api/jokes`, (req, res) => {
     const jokes = [
         {
             id : 1,
@@ -37,8 +38,9 @@ app.get('/jokes', (req, res) => {
     res.send(jokes);
 })
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 3000;
 
 app.listen(port, () => {
-    console.log(`serve at http://localhost${port} `);
-});
+    console.log(`serve at http://localhost:${port} `);
+}
+);
